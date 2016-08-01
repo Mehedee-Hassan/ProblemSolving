@@ -62,6 +62,6 @@ int main(){
     append(2);
     append(3);
     append(4);
-
+    print ();
 return 0;
 }
