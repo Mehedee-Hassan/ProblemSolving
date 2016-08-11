@@ -1,7 +1,0 @@
-/home/mhr/programming/problemSolving/book_pc/ch6/mst.cpp: In function ‘int mst()’:
-/home/mhr/programming/problemSolving/book_pc/ch6/mst.cpp:22:9: error: ambiguating new declaration of ‘int mst()’
- int mst(){
-         ^
-/home/mhr/programming/problemSolving/book_pc/ch6/mst.cpp:8:6: note: old declaration ‘void mst()’
- void mst();
-      ^
