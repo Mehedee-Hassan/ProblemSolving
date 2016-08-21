@@ -57,7 +57,7 @@ int main(){
 
 
         if(testNode == 0 && ttl == 0)
-          break;
+          break;d 
 
         answer = totalNumberOfNodes - bfs(testNode,ttl) -1;
         cout<<"Case "<<(testCase++)<<": "<< answer <<" nodes not reachable from node "<<testNode<<" with TTL = "<<ttl<<"."<<endl;
