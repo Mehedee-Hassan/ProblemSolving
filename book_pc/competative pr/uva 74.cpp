@@ -10,28 +10,38 @@ int main () {
 int one = 1;
 char charecter;
 string line = "";
+string newLine = "";
 
 charecter = getchar();
-while (charecter != '\0') {
 
-  if(one == 1 && charecter=='"')
+
+while (!cin.eof()) {
+   getline(cin,line);
+}
+
+
+
+int len = line.length();
+
+for(int i = 0 ; i < len ; i ++){
+
+  if(one == 1 && line[i]=='"')
     {
-      line += "``";
+      newLine += "``";
       one = 2;
     }
-  else if(one == 2 && charecter=='"'){
-     line += "''";
+  else if(one == 2 && line[i]=='"'){
+     newLine += "''";
      one = 1;
   }
   else{
-      line += charecter;
+      newLine += line[i];
   }
-
-  charecter = getchar();
 
 }
 
-cout<<line<<endl;
+
+cout<<newLine<<endl;
 
 
   return 0;
