@@ -7,78 +7,69 @@
 using namespace std;
 
 
-struct edge{
+struct Edge{
   int uNode ,vNode ,weight;
 
-  bool operator<(const edge& tempEdge) const{
-      return weight < tempEdge.weight;
+  bool operator<(const &Edge tempEdge) const{
+    return weight < tempEdge.weight;
   }
 
-};
+}
 
 int parent[_max];
-std::vector<edge> edges;
+std::vector<Edge> vectorOfEdges;
 
-
-int kruskalMst(int nodes);
-int find(int node);
-
+int kruskalMst(int numberOfNodes);
+int find(int parentOfNode);
 
 
 int main(){
-  std::cout << "test" << std::endl;
-
-  int m,n; // n = node ; m = edge
-  int uNode ,vNode , weight;
-  while(cin>>m>>n){
-
-    for(int i = 0 ; i < m ; i ++){
-
-      cin>>uNode>>vNode>>weight;
-      edge e;
-      e.uNode = uNode;
-      e.vNode = vNode;
-      e.weight= weight;
-      edges.push_back(e);
-
-    }
-  }
-
-
   return 0;
 }
 
 
-int kruskalMst(int nodes){
-  sort(edges.begin() ,edges.end());
 
-  for(int i = 0 ; i <= nodes ; i ++)
-    parent[i] = i ;
+int kruskalMst(int numberOfNodes) {
 
-    int count = 0, s = 0 ;
+    sort(vectorOfEdges.start() , vectorOfEdges.end());
 
-    int length = (int)edges.size();
+    for (int i = 0; i <= numberOfNodes; i++) {
+        parent[i] = i;
+        //make parent 
+    }
 
-    for(int i = 0 ; i < length ; i++){
-        int uNode = find(edges[i].uNode);
-        int vNode = find(edges[i].vNode);
+    int sum = 0 ;
+    int countOfEdges  = 0 ;
 
+    int length = vectorOfEdges.size();
+
+
+    for(int i = 0 ; i < length ; i ++){
+
+        Edge edge = vectorOfEdges[i];
+
+        int uNode = find(edge.uNode);
+        int vNode = find(edge.vNode);
 
         if(uNode != vNode){
-          parent[uNode] = vNode;
-          count++;
+              parent[uNode] = vNode;
+              sum+= edge.weight;
+              countOfEdges ++;
 
-          s += edges[i].weight;
 
-          if(count == nodes - 1)
-            break;
-
+              if(countOfEdges == numberOfNodes - 1){
+                // all nodes has been taken ;
+                break;
+              }
         }
     }
-return s;
+return sum;
 }
 
 
-int find(int node){
-  return (parent[node] == node) ? node : find(parent[node]);
+int find(int parentOfNode){
+
+  return (parent[parentOfNode] == parentOfNode) ?
+    parentOfNode : find(parent[parentOfNode]);
+
 }
