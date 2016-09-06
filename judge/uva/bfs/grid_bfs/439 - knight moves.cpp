@@ -100,16 +100,9 @@ int* convertToSquare(string a,string b){
   int *data = new int[4];
 
   data[0] = ((int)a[0]) - 96;
-
   data[1] = ((int)a[1]) - 48;
-
-
-
   data[2] = ((int)b[0]) - 96;
-
   data[3] = ((int)b[1]) - 48;
-
-
   return data;
 }
 
