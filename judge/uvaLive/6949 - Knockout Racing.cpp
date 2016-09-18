@@ -48,8 +48,17 @@ lli extraCalc(lli a,lli b,lli t,lli i){
   lli diff = (carcoordinate[i][1]-carcoordinate[i][0]);
   nowpos = diff<0 ? carcoordinate[i][1]:carcoordinate[i][0];//smallest position of the car
   diff = abs(diff);
-  nowpos += (t%(diff+1));
 
+  if(diff == 1){
+    if(diff % 2 != 0){
+      nowpos += diff;
+    }
+  }
+  else{
+    if(nowpos == 0)
+    diff++;
+    nowpos += (t%(diff));
+  }
   if(nowpos>=a && nowpos <=b ){
     result ++;
   }
