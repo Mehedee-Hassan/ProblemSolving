@@ -46,19 +46,24 @@ lli nowpos;
 lli extraCalc(lli a,lli b,lli t,lli i){
 
   lli diff = (carcoordinate[i][1]-carcoordinate[i][0]);
-  nowpos = diff<0 ? carcoordinate[i][1]:carcoordinate[i][0];//smallest position of the car
-  diff = abs(diff);
 
-  if(diff == 1){
-    if(diff % 2 != 0){
-      nowpos += diff;
-    }
+
+  nowpos = (t%(diff));
+  int timesOfVisit = t / diff;
+
+
+  if(timesOfVisit % 2 == 0){
+    nowpos = carcoordinate[i][0] + nowpos;
+
   }
-  else{
-    if(nowpos == 0)
-    diff++;
-    nowpos += (t%(diff));
+  else {
+
+    nowpos = carcoordinate[i][1] - nowpos;
+
+
   }
+
+
   if(nowpos>=a && nowpos <=b ){
     result ++;
   }
@@ -70,35 +75,21 @@ lli calculate(lli a,lli b,lli t,lli m){
     result = 0;
 
     for (lli i = 0; i < m; i++) {
-      if(carcoordinate[i][1]>carcoordinate[i][0])
-      {
+
+
           if(carcoordinate[i][1]<a || carcoordinate[i][0] >b)
-            {
-            //do nothing
+          {
+
             continue;
           }
           else if(carcoordinate[i][1]<=b && carcoordinate[i][0] >= a){
-            //cout<<"here"<<endl;
             result ++;
           }
           else
                extraCalc(a, b, t,i);
 
-      }
-      else if(carcoordinate[i][1]<carcoordinate[i][0])
-      {
-        if(carcoordinate[i][1]>b || carcoordinate[i][0] <a)
-              {
-              //do nothing
-              continue;
-              }
-        else if(carcoordinate[i][0]<=b && carcoordinate[i][1] >= a){
-        result++;
-      }
-        else
-            extraCalc(a, b, t,i);
 
-      }
+
 
     }
 
