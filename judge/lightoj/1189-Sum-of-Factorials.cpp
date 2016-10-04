@@ -1,4 +1,4 @@
-#include<iostream>      //
+    #include<iostream>      //
 #include<cstdio>        //
 #include<vector>        //
 #include<cstring>       //
@@ -24,8 +24,21 @@ using namespace std;
 int __tc = 1;
 
 __lli factorialUpTo15[16];
+int tempArray[16];
+
+
+int findLimit(int n){
+   for(int i = 2 ; i <= 15 ; i ++){
+        if(factorialUpTo15[i] > n){
+            return i-1;
+        }
+
+    }
+
+}
 
 void preCalcution(){
+    factorialUpTo15[0] =1;
     factorialUpTo15[1] =1;
 
     for(int i = 2 ; i <= 15 ; i ++){
@@ -51,27 +64,18 @@ int main(){
 
 int j ,i;
 bool possible = false,equalFlag = false;
-    for(i = 1 ; i <=15 ; i ++)
+
+    int limit = findLimit(n);
+
+    for(i = 1 ; i <=limit ; i ++)
     {
-        for(j = 1 ; j <=15 ; j ++){
+        for(j = i+1 ; j <=limit ; j ++){
 
 
-        if(factorialUpTo15[i] + factorialUpTo15[j] == n ){
-            equalFlag = true;
-            break;
         }
-
-        if(factorialUpTo15[i] > n && factorialUpTo15[j] > n){
-            possible = true;
-            break;
-        }
-        }
-        if(possible)
-            break;
-
-        if(equalFlag)
-            break;
     }
+
+
     cout<<"Case "<<__tc++<<": ";
 
     if(possible){
